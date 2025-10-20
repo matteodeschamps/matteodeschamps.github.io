@@ -1,0 +1,58 @@
+<html lang="en">
+<head>
+    <title>Map Deschamps</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+
+
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        .leaflet-container {
+            height: 1080px;
+            width: 1920px;
+            max-width: 100%;
+            max-height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="map"></div>
+<script>
+	const map = L.map('map').setView([33.976625295221766, -6.865379374820419], 16);
+	const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		maxZoom: 19,
+		attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+	}).addTo(map);
+	const marker = L.marker([33.976625295221766, -6.865379374820419]).addTo(map)
+		.bindPopup('<b>Localisation</b><br />IAV Hassan 2.').openPopup();
+	const circle = L.circle([33.97652581344424, -6.866910324320566], {
+		color: 'green',
+		fillColor: '#00FF00',
+		fillOpacity: 0.5,
+		radius: 40
+	}).addTo(map).bindPopup('Bloc topo.');
+	const polygon = L.polygon([
+		[33.97481765621992, -6.870590018287892],
+		[33.981674895948544, -6.863980916431584],
+		[33.98087513201587, -6.862740874504944],
+		[33.980583152832125, -6.8588217296503755],
+		[33.980285925659835, -6.8585008143490915],
+		[33.97359327911208, -6.864823766255903],
+		[33.97134599496256, -6.86523613264163],
+		[33.97020604553257, -6.866375049430031],
+		[33.973023321338225, -6.870773624612823]
+	]).addTo(map).bindPopup('Emprise IAV');
+</script>
+</body>
+
+</html>
